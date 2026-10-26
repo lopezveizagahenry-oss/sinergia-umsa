@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SINERGIA | Examen de Grado - Administración de Empresas UMSA</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Chart.js para simulaciones financieras y cuantitativas -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome para iconografía ejecutiva -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col">
+
+    <!-- HEADER / NAVEGACIÓN INSTITUCIONAL -->
+    <header class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                    <span class="text-white font-black text-xl">S</span>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg tracking-tight text-white flex items-center gap-2">
+                        SINERGIA <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">UMSA 2026</span>
+                    </h1>
+                    <p class="text-xs text-slate-400">Tu Examen de Grado, Tu Próximo Éxito | Adm. de Empresas</p>
+                </div>
+            </div>
+            <!-- Botones de Navegación por Área -->
+            <nav class="flex space-x-2 mt-2 md:mt-0">
+                <button onclick="switchTab('gerencial')" id="btn-gerencial" class="px-4 py-2 rounded-lg text-sm font-medium transition-all bg-cyan-500 text-slate-950 shadow">
+                    <i class="fa-solid fa-chess-board mr-1.5"></i> Área Gerencial
+                </button>
+                <button onclick="switchTab('especializada')" id="btn-especializada" class="px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:bg-slate-800">
+                    <i class="fa-solid fa-chart-line mr-1.5"></i> Área Especializada
+                </button>
+                <button onclick="switchTab('cuantitativa')" id="btn-cuantitativa" class="px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:bg-slate-800">
+                    <i class="fa-solid fa-calculator mr-1.5"></i> Área Cuantitativa
+                </button>
+                <button onclick="switchTab('tribunal')" id="btn-tribunal" class="px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:bg-slate-800">
+                    <i class="fa-solid fa-graduation-cap mr-1.5"></i> Modo Tribunal
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
+
+        <!-- ================= MÓDULO 1: ÁREA GERENCIAL ================= -->
+        <section id="tab-gerencial" class="space-y-6">
+            <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 backdrop-blur-sm">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-sitemap text-cyan-400"></i> Repositorio y Simuladores de los 12 Bolos (Gerencia y Organización)
+                        </h2>
+                        <p class="text-sm text-slate-400">Selecciona o busca los bolos teóricos de administración de la UMSA para evaluar su aplicación práctica.</p>
+                    </div>
+                    <div class="w-full md:w-72">
+                        <input type="text" id="searchBolos" placeholder="Buscar bolo por nombre..." onkeyup="filterBolos()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-cyan-500">
+                    </div>
+                </div>
+
+                <!-- Grid de los 12 Bolos -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="bolosGrid">
+                    <!-- Los bolos se generan por JS o HTML estático detallado -->
+                    <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-xl hover:border-cyan-500/50 transition-all">
+                        <span class="text-xs font-semibold px-2 py-1 bg-cyan-500/10 text-cyan-400 rounded-md">Bolo 1</span>
+                        <h3 class="font-bold text-white mt-2">Administración y Organización</h3>
+                        <p class="text-xs text-slate-400 mt-1">Evolución del pensamiento administrativo, aportes de Fayol, Taylor y la administración científica moderna.</p>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-xl hover:border-cyan-500/50 transition-all">
+                        <span class="text-xs font-semibold px-2 py-1 bg-cyan-500/10 text-cyan-400 rounded-md">Bolo 2</span>
+                        <h3 class="font-bold text-white mt-2">Planificación Estratégica y Táctica</h3>
+                        <p class="text-xs text-slate-400 mt-1">Modelos de formulación de objetivos SMART, matrices de decisión y planeación por objetivos (APO).</p>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-xl hover:border-cyan-500/50 transition-all">
+                        <span class="text-xs font-semibold px-2 py-1 bg-cyan-500/10 text-cyan-400 rounded-md">Bolo 3</span>
+                        <h3 class="font-bold text-white mt-2">Organización y Estructura</h3>
+                        <p class="text-xs text-slate-400 mt-1">Diseño organizacional, tipología de departamentalización, organigramas y manuales de funciones (MOF).</p>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-xl hover:border-cyan-500/50 transition-all">
+                        <span class="text-xs font-semibold px-2 py-1 bg-cyan-500/10 text-cyan-400 rounded-md">Bolo 6</span>
+                        <h3 class="font-bold text-white mt-2">Gestión Estratégica & Competitividad</h3>
+                        <p class="text-xs text-slate-400 mt-1">Cinco Fuerzas de Porter, Análisis FODA Cruzado y formulación de ventajas competitivas sostenibles.</p>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-xl hover:border-cyan-500/50 transition-all">
+                        <span class="text-xs font-semibold px-2 py-1 bg-cyan-500/10 text-cyan-400 rounded-md">Bolo 9</span>
+                        <h3 class="font-bold text-white mt-2">Gestión Pública (Ley 1178 SAFCO)</h3>
+                        <p class="text-xs text-slate-400 mt-1">Sistemas de administración y control gubernamental en Bolivia, responsabilidad por la función pública.</p>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-xl hover:border-cyan-500/50 transition-all">
+                        <span class="text-xs font-semibold px-2 py-1 bg-cyan-500/10 text-cyan-400 rounded-md">Bolo 11</span>
+                        <h3 class="font-bold text-white mt-2">Liderazgo y Comportamiento</h3>
+                        <p class="text-xs text-slate-400 mt-1">Teorías de contingencia, estilos directivos y motivación organizacional (Maslow, Herzberg, Blake & Mouton).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= MÓDULO 2: ÁREA ESPECIALIZADA ================= -->
+        <section id="tab-especializada" class="space-y-6 hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Simulador Financiero VAN / TIR -->
+                <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 backdrop-blur-sm">
+                    <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-coins text-cyan-400"></i> Evaluación Financiera de Proyectos (VAN y TIR)
+                    </h3>
+                    <p class="text-xs text-slate-400 mb-4">Ingresa los parámetros iniciales para evaluar la viabilidad financiera.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-xs font-medium text-slate-300">Inversión Inicial ($us)</label>
+                            <input type="number" id="inversion" value="50000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white mt-1">
+                        </div>
+                        <div>
+                            <label class="text-xs font-medium text-slate-300">Flujo Anual Promedio ($us)</label>
+                            <input type="number" id="flujo" value="15000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white mt-1">
+                        </div>
+                        <div>
+                            <label class="text-xs font-medium text-slate-300">Tasa de Descuento (WACC / COK en %)</label>
+                            <input type="number" id="tasa" value="12" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white mt-1">
+                        </div>
+                        <button onclick="calcularFinanzas()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2.5 rounded-xl transition-all shadow-lg shadow-cyan-500/20">
+                            Calcular Indicadores de Viabilidad
+                        </button>
+                    </div>
+
+                    <div id="resultadoFinanciero" class="mt-6 p-4 bg-slate-900/90 border border-slate-800 rounded-xl text-sm space-y-2">
+                        <p class="text-slate-400">Resultados del modelo aparecerán aquí...</p>
+                    </div>
+                </div>
+
+                <!-- Análisis DuPont -->
+                <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 backdrop-blur-sm">
+                    <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-pie text-cyan-400"></i> Modelo DuPont de 3 Factores (ROE)
+                    </h3>
+                    <p class="text-xs text-slate-400 mb-4">Desglose de la rentabilidad financiera sobre el patrimonio.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-xs font-medium text-slate-300">Utilidad Neta / Ventas (Margen Neto %)</label>
+                            <input type="number" id="margen" value="15" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white mt-1">
+                        </div>
+                        <div>
+                            <label class="text-xs font-medium text-slate-300">Ventas / Activo Total (Rotación)</label>
+                            <input type="number" id="rotacion" value="1.2" step="0.1" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white mt-1">
+                        </div>
+                        <div>
+                            <label class="text-xs font-medium text-slate-300">Activo Total / Patrimonio (Apalancamiento)</label>
+                            <input type="number" id="apalancamiento" value="1.8" step="0.1" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white mt-1">
+                        </div>
+                        <button onclick="calcularDuPont()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2.5 rounded-xl transition-all shadow-lg shadow-cyan-500/20">
+                            Calcular ROE Global
+                        </button>
+                    </div>
+                    <div id="resultadoDuPont" class="mt-6 p-4 bg-slate-900/90 border border-slate-800 rounded-xl text-sm">
+                        <p class="text-slate-400">El ROE calculado se mostrará aquí...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= MÓDULO 3: ÁREA CUANTITATIVA ================= -->
+        <section id="tab-cuantitativa" class="space-y-6 hidden">
+            <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 backdrop-blur-sm">
+                <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-boxes-stacked text-cyan-400"></i> Modelo EOQ (Lote Económico de Pedido) - Investigación de Operaciones
+                </h3>
+                <p class="text-xs text-slate-400 mb-6">Optimización de inventarios minimizando costos de almacenamiento y emisión de pedidos.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label class="text-xs font-medium text-slate-300">Demanda Anual (D en unidades)</label>
+                        <input type="number" id="demandaD" value="12000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white mt-1">
+                    </div>
+                    <div>
+                        <label class="text-xs font-medium text-slate-300">Costo de Pedido (S en $us)</label>
+                        <input type="number" id="costoS" value="50" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white mt-1">
+                    </div>
+                    <div>
+                        <label class="text-xs font-medium text-slate-300">Costo Mantenimiento (H en $us/unid-año)</label>
+                        <input type="number" id="costoH" value="2.5" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white mt-1">
+                    </div>
+                </div>
+                <button onclick="calcularEOQ()" class="w-full md:w-auto px-6 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2.5 rounded-xl transition-all shadow-lg shadow-cyan-500/20">
+                    Calcular Lote Óptimo ($Q^*$)
+                </button>
+
+                <div id="resultadoEOQ" class="mt-6 p-4 bg-slate-900/90 border border-slate-800 rounded-xl text-sm">
+                    <p class="text-slate-400">Los resultados de optimización aparecerán aquí...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= MÓDULO 4: MODO TRIBUNAL ================= -->
+        <section id="tab-tribunal" class="space-y-6 hidden">
+            <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 backdrop-blur-sm text-center">
+                <h3 class="text-xl font-bold text-white mb-2">Simulador de Preguntas del Tribunal UMSA</h3>
+                <p class="text-sm text-slate-400 max-w-xl mx-auto mb-6">Pon a prueba tu conocimiento con preguntas frecuentes de defensa de grado elaboradas bajo el rigor académico de la Facultad.</p>
+                <div class="p-6 bg-slate-900 border border-slate-800 rounded-xl max-w-2xl mx-auto text-left">
+                    <span class="text-xs font-semibold px-2 py-1 bg-amber-500/10 text-amber-400 rounded-md">Pregunta Frecuente #1</span>
+                    <p class="font-medium text-white mt-3">¿Cómo justifica la integración sistémica entre el Área Gerencial y el Modelo Cuantitativo de su proyecto?</p>
+                    <div class="mt-4 p-3 bg-slate-800/50 rounded-lg text-xs text-slate-300 border border-slate-700">
+                        <strong class="text-cyan-400">Respuesta Modelo Recomendada:</strong> Bajo la Teoría General de Sistemas (Bertalanffy), la gerencia fija los lineamientos estratégicos (Bolo 6), los cuales se traducen en restricciones y variables de optimización matemática en el modelo cuantitativo (EOQ/VAN), garantizando consistencia empírica y rigurosidad directiva.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-4 text-center text-xs text-slate-500">
+        Proyecto Sinergia - Examen de Grado Administración de Empresas UMSA 2026 &copy; Todos los derechos reservados.
+    </footer>
+
+    <!-- SCRIPTS DE INTERACTIVIDAD -->
+    <script>
+        function switchTab(tabId) {
+            ['gerencial', 'especializada', 'cuantitativa', 'tribunal'].forEach(t => {
+                document.getElementById(`tab-${t}`).classList.add('hidden');
+                document.getElementById(`btn-${t}`).className = "px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:bg-slate-800";
+            });
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            document.getElementById(`btn-${tabId}`).className = "px-4 py-2 rounded-lg text-sm font-medium transition-all bg-cyan-500 text-slate-950 shadow";
+        }
+
+        function calcularFinanzas() {
+            const I0 = parseFloat(document.getElementById('inversion').value);
+            const F = parseFloat(document.getElementById('flujo').value);
+            const k = parseFloat(document.getElementById('tasa').value) / 100;
+            // Cálculo estimado a 5 años para demostración rápida
+            let van = -I0;
+            for(let t=1; t<=5; t++) {
+                van += F / Math.pow(1 + k, t);
+            }
+            const bc = (van + I0) / I0;
+            document.getElementById('resultadoFinanciero').innerHTML = `
+                <p class="text-white font-bold">Indicadores Calculados (Horizonte 5 Años):</p>
+                <p class="text-cyan-400">VAN Estimado: $us ${van.toFixed(2)}</p>
+                <p class="text-slate-300">Relación Beneficio / Costo (B/C): ${bc.toFixed(2)}</p>
+                <p class="text-xs text-slate-400 mt-1">${van > 0 ? '✓ Proyecto Viable (Genera valor para el accionista)' : '✗ Proyecto No Viable (No cubre la tasa exigida)'}</p>
+            `;
+        }
+
+        function calcularDuPont() {
+            const m = parseFloat(document.getElementById('margen').value);
+            const r = parseFloat(document.getElementById('rotacion').value);
+            const a = parseFloat(document.getElementById('apalancamiento').value);
+            const roe = m * r * a;
+            document.getElementById('resultadoDuPont').innerHTML = `
+                <p class="text-white font-bold">Rentabilidad sobre el Patrimonio (ROE):</p>
+                <p class="text-cyan-400 text-lg font-bold">${roe.toFixed(2)}%</p>
+                <p class="text-xs text-slate-400 mt-1">Margen Neto (${m}%) × Rotación (${r}) × Apalancamiento (${a})</p>
+            `;
+        }
+
+        function calcularEOQ() {
+            const D = parseFloat(document.getElementById('demandaD').value);
+            const S = parseFloat(document.getElementById('costoS').value);
+            const H = parseFloat(document.getElementById('costoH').value);
+            const eoq = Math.sqrt((2 * D * S) / H);
+            const numPedidos = D / eoq;
+            document.getElementById('resultadoEOQ').innerHTML = `
+                <p class="text-white font-bold">Resultado de Optimización de Inventarios:</p>
+                <p class="text-cyan-400 text-lg font-bold">Lote Óptimo ($Q^*$): ${Math.ceil(eoq)} unidades</p>
+                <p class="text-slate-300">Número óptimo de pedidos al año: ${numPedidos.toFixed(1)} pedidos</p>
+            `;
+        }
+
+        function filterBolos() {
+            // Lógica de filtrado rápido para los bolos
+            const query = document.getElementById('searchBolos').value.toLowerCase();
+            const cards = document.querySelectorAll('#bolosGrid > div');
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                card.style.display = text.includes(query) ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
